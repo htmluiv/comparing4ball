@@ -1,4 +1,6 @@
 let ball1, ball2, ball3, ball4;
+let cloudx = 100;
+let cloudy = 100;
 
 function setup() {
   createCanvas(500, 500);
@@ -67,7 +69,10 @@ function draw() {
     ball1.applyForce(wind); ball2.applyForce(wind); ball3.applyForce(wind); ball4.applyForce(wind);  windEffect.display();
   }
   grass.display();
-  cloud.show();
+
+  cloud(cloudx, cloudy);
+  cloud(cloudx +100, cloudy+100);
+//  cloud.show();
 }
 
 
@@ -139,17 +144,24 @@ class Grass  {
 }
 }
 
-class Cloud  {
-  show()  {
+class Cloud(cloudx, cloudy) {
+  fill(250);
   noStroke();
-  fill(255, 200);
-    for(let i=0; i< width; i++)  {
-  ellipse(20*4*i, 60, 90, 50);
-  ellipse(20*4*i, 30, 120, 50);
-  ellipse(20*4*i, 0, 90, 50);
-  }
-  }
+  ellipse(cloudx, cloudy, 70, 50);
+  ellipse(cloudx,+10, cloudy+10, 70, 50);
+  ellipse(cloudx-20, cloudy+10, 70, 50);
 }
+// class Cloud  {
+//   show()  {
+//   noStroke();
+//   fill(255, 200);
+//     for(let i=0; i< width; i++)  {
+//   ellipse(20*4*i, 60, 90, 50);
+//   ellipse(20*4*i, 30, 120, 50);
+//   ellipse(20*4*i, 0, 90, 50);
+//   }
+//   }
+// }
 
 class WindEffect  {
   display()  {
