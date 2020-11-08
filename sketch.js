@@ -62,7 +62,7 @@ function draw() {
   ball3.display(); ball3.move(); ball3.checkEdges(); ball3.applyForce(gravity3);
   ball4.display(); ball4.move(); ball4.checkEdges(); ball4.applyForce(gravity4);
 
-  let wind = createVector(0.2, 0);
+  let wind = createVector(0.3, 0);
   if(mouseIsPressed)  {
     ball1.applyForce(wind); ball2.applyForce(wind); ball3.applyForce(wind); ball4.applyForce(wind);  windEffect.display();
   }
