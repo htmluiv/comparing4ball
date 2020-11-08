@@ -10,7 +10,7 @@ function setup() {
   grass = new Grass();
   cloud = new Cloud();
   windEffect = new WindEffect();
-  createP('Click mouse to apply wind force.');
+  createP('Press mouse on to apply wind force.');
 }
 
 function draw() {
@@ -21,47 +21,47 @@ function draw() {
   let gravity4 = createVector(0, 0.2*ball4.mass);
   strokeWeight(4);
   textSize(16);
-  text('TENNIS', 370, 130);  
+  text('TENNIS', 370, 130);
   textSize(16);
-  text('BASKETBALL', 250, 130);  
+  text('BASKETBALL', 250, 130);
   textSize(16);
-  text('BASEBALL', 160, 130);  
+  text('BASEBALL', 160, 130);
   textSize(16);
-  text('FOOTBALL', 60, 130);  
-  
+  text('FOOTBALL', 60, 130);
+
   let c1 = 0.1; // 마찰계수 M을 정한다
   let friction1 = ball1.vel.copy(); //현재의 속도를 가져온다
   friction1.mult(-1); //마찰력의 방향인 -1을 곱함
   friction1.normalize();
   friction1.mult(c1); //벡터의 크기(길이)를 위에서 정한 마찰계수로 정함
   ball1.applyForce(friction1);
-  
-  let c2 = 0.1; 
-  let friction2 = ball2.vel.copy(); 
-  friction2.mult(-1); 
+
+  let c2 = 0.1;
+  let friction2 = ball2.vel.copy();
+  friction2.mult(-1);
   friction2.normalize();
-  friction2.mult(c2); 
+  friction2.mult(c2);
   ball2.applyForce(friction2);
-  
-  let c3 = 0.1 
-  let friction3 = ball3.vel.copy(); 
-  friction3.mult(-1); 
+
+  let c3 = 0.1
+  let friction3 = ball3.vel.copy();
+  friction3.mult(-1);
   friction3.normalize();
-  friction3.mult(c3); 
+  friction3.mult(c3);
   ball3.applyForce(friction3);
-  
-  let c4 = 0.1 
-  let friction4 = ball1.vel.copy(); 
-  friction4.mult(-1); 
+
+  let c4 = 0.1
+  let friction4 = ball1.vel.copy();
+  friction4.mult(-1);
   friction4.normalize();
-  friction4.mult(c4); 
+  friction4.mult(c4);
   ball4.applyForce(friction4);
-    
-  ball1.display(); ball1.move(); ball1.checkEdges(); ball1.applyForce(gravity1); 
-  ball2.display(); ball2.move(); ball2.checkEdges(); ball2.applyForce(gravity2); 
-  ball3.display(); ball3.move(); ball3.checkEdges(); ball3.applyForce(gravity3); 
+
+  ball1.display(); ball1.move(); ball1.checkEdges(); ball1.applyForce(gravity1);
+  ball2.display(); ball2.move(); ball2.checkEdges(); ball2.applyForce(gravity2);
+  ball3.display(); ball3.move(); ball3.checkEdges(); ball3.applyForce(gravity3);
   ball4.display(); ball4.move(); ball4.checkEdges(); ball4.applyForce(gravity4);
-  
+
   let wind = createVector(0.2, 0);
   if(mouseIsPressed)  {
     ball1.applyForce(wind); ball2.applyForce(wind); ball3.applyForce(wind); ball4.applyForce(wind);  windEffect.display();
@@ -76,24 +76,24 @@ class Ball  {
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
-    
+
     this.x = x; this.y = y; this.r = r;
     this.red = red; this.green = green; this.blue = blue;
     this.mass = mass;
   }
-  
+
   applyForce(force){
     var f = force.copy();
     f.div(this.mass);
     this.acc.add(f);
   }
-  
+
   move()  {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
     this.acc.set(0,0);
   }
-  
+
   display()  {
     stroke(0);
     strokeWeight(4);
