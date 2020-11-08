@@ -1,6 +1,6 @@
 let ball1, ball2, ball3, ball4;
-let cloudx = 100;
-let cloudy = 100;
+let cloudx = 30;
+let cloudy = 30;
 
 function setup() {
   createCanvas(500, 500);
@@ -21,15 +21,17 @@ function draw() {
   let gravity2 = createVector(0, 0.2*ball2.mass);
   let gravity3 = createVector(0, 0.2*ball3.mass);
   let gravity4 = createVector(0, 0.2*ball4.mass);
+
   strokeWeight(4);
+  stroke(0);
   textSize(16);
-  text('TENNIS', 370, 130);
+  text('TENNIS', 375, 140);
   textSize(16);
-  text('BASKETBALL', 250, 130);
+  text('BASKETBALL', 260, 140);
   textSize(16);
-  text('BASEBALL', 160, 130);
+  text('BASEBALL', 160, 140);
   textSize(16);
-  text('FOOTBALL', 60, 130);
+  text('FOOTBALL', 60, 140);
 
   let c1 = 0.1; // 마찰계수 M을 정한다
   let friction1 = ball1.vel.copy(); //현재의 속도를 가져온다
@@ -70,8 +72,12 @@ function draw() {
   }
   grass.display();
 
-  cloud(cloudx, cloudy);
-  cloud(cloudx +100, cloudy+100);
+  cloud.display(cloudx, cloudy);
+  cloud.display(cloudx +100, cloudy+40);
+  cloud.display(cloudx +150, cloudy+40);
+  cloud.display(cloudx +250, cloudy);
+  cloud.display(cloudx +350, cloudy+40);
+  cloud.display(cloudx +420, cloudy);
 //  cloud.show();
 }
 
@@ -144,12 +150,14 @@ class Grass  {
 }
 }
 
-class Cloud(cloudx, cloudy) {
-  fill(250);
+class Cloud {
+  display(cloudx, cloudy)  {
+  fill(250, 250);
   noStroke();
   ellipse(cloudx, cloudy, 70, 50);
-  ellipse(cloudx,+10, cloudy+10, 70, 50);
+  ellipse(cloudx+10, cloudy+10, 70, 50);
   ellipse(cloudx-20, cloudy+10, 70, 50);
+  }
 }
 // class Cloud  {
 //   show()  {
